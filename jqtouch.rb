@@ -50,11 +50,11 @@ module JQTouch
   end
   
   class Page
-    attr_accessor :name, :toolbar, :lists
+    attr_accessor :name, :toolbar, :contents
     
     def initialize(name = 'Page')
       @name = name.to_s
-      @lists = []
+      @contents = []
     end
     
     def toolbar(name, &block)
@@ -64,16 +64,24 @@ module JQTouch
     end
     
     def list(css_class = :edgetoedge, &block)
-      @lists << List.new(css_class)
-      @lists.last.instance_eval(&block) if block
-      return @lists.last
+      @contents << List.new(css_class)
+      @contents.last.instance_eval(&block) if block
+      return @contents.last
+    end
+    
+    def content(text)
+      @contents << text
     end
     
     def build(b)
-      b.div({:id => @name.to_s}) {
+      b.div({:id => @name.to_s}) { 
         @toolbar.build(b) if @toolbar
-        @lists.each do |list|
-          list.build(b)
+        @contents.each do |c|
+          if c.respond_to? 'build'
+            c.build(b)
+          else
+            b << c
+          end
         end
       }
     end

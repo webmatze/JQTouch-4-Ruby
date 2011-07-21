@@ -27,17 +27,24 @@ Create a ruby file 'myfirstapp.rb' and add the following code:
         end
         list do
           item "Info", :info, :arrow
-         end
+          item "About", :about, :arrow
+        end
       end
       page :about do
         toolbar "About" do
           button :back, "Back"
         end
+        content "
+          <p>Here you can write your own HTML content</p>
+        "
       end
       page :info do
         toolbar "Info" do
           button :back, "Back"
         end
+        content "
+          <p>Write something about you!</p>
+        "
       end
     end
 
