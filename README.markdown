@@ -16,6 +16,8 @@ Requirements
 Example
 -------
 
+Create a ruby file 'myfirstapp.rb' and add the following code:
+
     require 'jqtouch'
 
     JQTouch.app "My first App" do
@@ -38,6 +40,14 @@ Example
         end
       end
     end
+
+Then run this file and safe the output into an html file:
+
+    $ ruby myfirstapp.rb > myfirstapp.htm
+    
+Now open the created html file in a browser or on your mobile phone.
+
+Have fun :)
 
 Copyright
 ---------
