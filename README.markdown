@@ -26,8 +26,8 @@ Create a ruby file 'myfirstapp.rb' and add the following code:
           button :about, "about"
         end
         list do
-          item "Info", :info, :arrow
-          item "About", :about, :arrow
+          item "Info", "more info", :info, :arrow
+          item "About", "this site", :about, :arrow
         end
       end
       page :about do
