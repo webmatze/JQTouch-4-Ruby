@@ -11,7 +11,7 @@ JQTouch.app "webmazte.de" do
     list do
       item "About", :about, :arrow
       item "Projects", :projects, :arrow
-      item "test"
+      item "this has no function"
     end
   end
   

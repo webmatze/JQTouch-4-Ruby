@@ -63,7 +63,7 @@ module JQTouch
       return @toolbar
     end
     
-    def list(css_class = :edgetoedge, &block)
+    def list(css_class = :rounded, &block)
       @contents << List.new(css_class)
       @contents.last.instance_eval(&block) if block
       return @contents.last
@@ -131,7 +131,7 @@ module JQTouch
   class List
     attr_accessor :css_class, :items
     
-    def initialize(css_class = :edgetoedge)
+    def initialize(css_class = :rounded)
       @css_class = css_class
       @items = []
     end
