@@ -10,8 +10,11 @@ JQTouch.app "webmazte.de" do
     end
     list do
       item "About", :about, :arrow
-      item "Projects", :projects, :arrow
+      item "Projects", :projects, :forward
+    end
+    list "Second List" do
       item "this has no function"
+      item "this either"
     end
   end
   
@@ -20,7 +23,7 @@ JQTouch.app "webmazte.de" do
       button :back, "Back"
       button :projects, "Projects"
     end
-    info "<h1>Here you can use HTML Tags</h1>"
+    info "<h2>Here you can use HTML Tags</h2>"
     info <<-html
         Or just plain simple text over
         multiple lines
@@ -34,7 +37,7 @@ JQTouch.app "webmazte.de" do
       button :back, "Back"
     end
     info "
-      <h1>My Projects</h1>
+      <h2>My Projects</h2>
       <p>This is a page where I will show you all my projects.</p>
       <p>Have fun!</p>
     "

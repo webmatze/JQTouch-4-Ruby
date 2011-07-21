@@ -129,10 +129,11 @@ module JQTouch
   end
   
   class List
-    attr_accessor :css_class, :items
+    attr_accessor :css_class, :items, :title
     
-    def initialize(css_class = :rounded)
+    def initialize(title = nil, css_class = :rounded)
       @css_class = css_class
+      @title = title
       @items = []
     end
     
@@ -142,6 +143,7 @@ module JQTouch
     end
     
     def build(b)
+      b.h2(@title) if @title
       b.ul({:class => @css_class}) {
         @items.each do |item|
           item.build(b)
