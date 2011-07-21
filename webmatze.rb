@@ -9,12 +9,12 @@ JQTouch.app "webmazte.de" do
       button :about, "about"
     end
     list do
-      item "About", :about, :arrow
-      item "Projects", :projects, :forward
+      item "About", "", :about, :arrow
+      item "Projects", 10, :projects, :arrow, :counter
     end
     list "Second List" do
-      item "this has no function"
-      item "this either"
+      item "this has no function", "here can be"
+      item "this either", "some text"
     end
   end
   

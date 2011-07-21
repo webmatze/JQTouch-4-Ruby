@@ -457,7 +457,7 @@ body {
     padding: 4px 10px 5px 10px;
     display: inline !important;
     width: auto;
-    margin-top: -22px;
+    /*margin-top: -22px;*/
 }
 
 #jqt ul li.arrow small.counter {

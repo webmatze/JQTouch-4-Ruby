@@ -2,7 +2,7 @@ require 'rubygems'
 require 'builder'
 
 module JQTouch
-  def self.app(name, &block)
+  def self.app(name = 'MyApp', &block)
     application = App.new(name)
     application.instance_eval(&block) if block
     puts application.to_s
@@ -11,12 +11,12 @@ module JQTouch
   class App
     attr_accessor :name, :pages
     
-    def initialize(name = 'MyApp')
+    def initialize(name)
       @name = name.to_s
       @pages = []
     end
     
-    def page(name, &block)
+    def page(name = 'Page', &block)
       new_page = Page.new(name)
       new_page.instance_eval(&block) if block
       @pages << new_page
@@ -29,7 +29,7 @@ module JQTouch
         b.head {
           b.title @name
           b.link({:type => "text/css", :rel => "stylesheet", :media => "screen", :href => "jqtouch/jqtouch.css"})
-          b.link({:type => "text/css", :rel => "stylesheet", :media => "screen", :href => "themes/jqt/theme.css"})
+          b.link({:type => "text/css", :rel => "stylesheet", :media => "screen", :href => "themes/apple/theme.css"})
           b.script({:type => "text/javascript", :src => "jqtouch/jquery-1.4.2.min.js"},"")
           b.script({:type => "text/javascript", :src => "jqtouch/jqtouch.js"},"")
           b.script({:type => "text/javascript"},"
@@ -52,19 +52,19 @@ module JQTouch
   class Page
     attr_accessor :name, :toolbar, :contents
     
-    def initialize(name = 'Page')
+    def initialize(name)
       @name = name.to_s
       @contents = []
     end
     
-    def toolbar(name, &block)
+    def toolbar(name = 'Toolbar', &block)
       @toolbar = Toolbar.new(name)
       @toolbar.instance_eval(&block) if block
       return @toolbar
     end
     
-    def list(css_class = :rounded, &block)
-      @contents << List.new(css_class)
+    def list(title = nil, css_class = :rounded, &block)
+      @contents << List.new(title, css_class)
       @contents.last.instance_eval(&block) if block
       return @contents.last
     end
@@ -92,12 +92,12 @@ module JQTouch
   class Toolbar
     attr_accessor :name, :buttons
     
-    def initialize(name = 'Toolbar')
+    def initialize(name)
       @name = name
       @buttons = []
     end
     
-    def button(target, name)
+    def button(target = :back, name = 'Back')
       @buttons << Button.new(target, name)
     end
     
@@ -114,7 +114,7 @@ module JQTouch
   class Button
     attr_accessor :target, :name
     
-    def initialize(target = :back, name = 'Back')
+    def initialize(target, name)
       @target = target.to_s
       @name = name.to_s
     end
@@ -131,20 +131,20 @@ module JQTouch
   class List
     attr_accessor :css_class, :items, :title
     
-    def initialize(title = nil, css_class = :rounded)
+    def initialize(title, css_class)
       @css_class = css_class
       @title = title
       @items = []
     end
     
-    def item(name = 'Item', target = "", css_class = "")
-      item = Item.new(name, target, css_class)
+    def item(name = "", small = nil, target = nil, item_class = "", small_class = "")
+      item = Item.new(name, small, target, item_class, small_class)
       @items << item
     end
     
     def build(b)
-      b.h2(@title) if @title
-      b.ul({:class => @css_class}) {
+      b.h2(@title.to_s) if @title
+      b.ul({:class => @css_class.to_s}) {
         @items.each do |item|
           item.build(b)
         end
@@ -153,17 +153,27 @@ module JQTouch
   end
   
   class Item
-    attr_accessor :css_class, :name, :target
+    attr_accessor :item_class, :small_class, :name, :small, :target
     
-    def initialize(name, target, css_class = "")
+    def initialize(name, small, target, item_class, small_class)
       @name = name
+      @small = small
       @target = target
-      @css_class = css_class
+      @item_class = item_class
+      @small_class = small_class
     end
     
     def build(b)
-      b.li({:class => @css_class}) {
-        b.a({:href => "##{@target.to_s}"}, @name.to_s)
+      b.li({:class => @item_class}) {
+        if @target
+          b.a({:href => "##{@target.to_s}"}) {
+            b << @name.to_s
+            b.small({:class => @small_class}, @small.to_s) if @small && @small != ""          
+          }
+        else
+          b << @name.to_s
+          b.small({:class => @small_class}, @small.to_s) if @small && @small != ""          
+        end
       }
     end
   end
