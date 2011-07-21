@@ -16,28 +16,28 @@ Requirements
 Example
 -------
 
-  require 'jqtouch'
+    require 'jqtouch'
 
-  JQTouch.app "My first App" do
-    page :index do
-      toolbar "Index" do
-        button :about, "about"
+    JQTouch.app "My first App" do
+      page :index do
+        toolbar "Index" do
+          button :about, "about"
+        end
+        list do
+          item "Info", :info, :arrow
+         end
       end
-      list do
-        item "Info", :info, :arrow
-       end
-    end
-    page :about do
-      toolbar "About" do
-        button :back, "Back"
+      page :about do
+        toolbar "About" do
+          button :back, "Back"
+        end
+      end
+      page :info do
+        toolbar "Info" do
+          button :back, "Back"
+        end
       end
     end
-    page :info do
-      toolbar "Info" do
-        button :back, "Back"
-      end
-    end
-  end
 
 Copyright
 ---------
