@@ -9,9 +9,9 @@ jQTouch for Ruby is a ruby DSL to easy create jQTouch mobile applications.
 Requirements
 ------------
 
-- gem install builder
-- jQuery Library
-- jQTouch Javascript Library
+- gem install builder (http://rubygems.org/gems/builder)
+- jQuery Library (http://jquery.com/)
+- jQTouch Javascript Library (http://jqtouch.com/)
 
 Example
 -------
