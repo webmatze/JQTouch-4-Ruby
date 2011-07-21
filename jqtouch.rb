@@ -69,7 +69,7 @@ module JQTouch
       return @contents.last
     end
     
-    def content(text)
+    def info(text)
       @contents << text
     end
     
@@ -80,7 +80,9 @@ module JQTouch
           if c.respond_to? 'build'
             c.build(b)
           else
-            b << c
+            b.div({:class => "info"}) { |i|
+              i << c
+            }
           end
         end
       }

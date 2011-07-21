@@ -34,7 +34,8 @@ Create a ruby file 'myfirstapp.rb' and add the following code:
         toolbar "About" do
           button :back, "Back"
         end
-        content "
+        info "
+          <h1>About this app</h1>
           <p>Here you can write your own HTML content</p>
         "
       end
@@ -42,7 +43,8 @@ Create a ruby file 'myfirstapp.rb' and add the following code:
         toolbar "Info" do
           button :back, "Back"
         end
-        content "
+        info "
+          <h1>Info Page</h1>
           <p>Write something about you!</p>
         "
       end

@@ -18,19 +18,22 @@ JQTouch.app "webmazte.de" do
   page :about do
     toolbar "About" do
       button :back, "Back"
+      button :projects, "Projects"
     end
-    content <<-html
-        <p>here can be some HTML Content<p>
-        <p>You can write <strong>multiple lines</strong> of code<p>
+    info "<h1>Here you can use HTML Tags</h1>"
+    info <<-html
+        Or just plain simple text over
+        multiple lines
+        to tell something about you
+        or your app or whatever!
     html
-    content "<h1>Or you can use this form</h1>"
   end
   
   page :projects do
     toolbar "Projects" do
       button :back, "Back"
     end
-    content "
+    info "
       <h1>My Projects</h1>
       <p>This is a page where I will show you all my projects.</p>
       <p>Have fun!</p>
