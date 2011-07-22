@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>My first App</title>
+    <link type="text/css" href="jqtouch/jqtouch.css" rel="stylesheet" media="screen"/>
+    <link type="text/css" href="themes/apple/theme.css" rel="stylesheet" media="screen"/>
+    <script type="text/javascript" src="jqtouch/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="jqtouch/jqtouch.js"></script>
+    <script type="text/javascript">
+      var jQT = $.jQTouch({
+          icon: 'app.png',
+          statusBar: 'black'
+      });
+    </script>
+  </head>
+  <body>
+    <div id="index">
+      <div class="toolbar">
+        <h1>Index</h1>
+        <a href="#about" class="button">about</a>
+      </div>
+      <ul class="rounded">
+        <li class="arrow">
+          <a href="#info">
+Info            <small class="">more info</small>
+          </a>
+        </li>
+        <li class="arrow">
+          <a href="#about">
+About            <small class="">this site</small>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div id="about">
+      <div class="toolbar">
+        <h1>About</h1>
+        <a href="#" class="button back">Back</a>
+      </div>
+      <div class="info">
+
+      <h1>About this app</h1>
+      <p>Here you can write your own HTML content</p>
+          </div>
+    </div>
+    <div id="info">
+      <div class="toolbar">
+        <h1>Info</h1>
+        <a href="#" class="button back">Back</a>
+      </div>
+      <div class="info">
+
+      <h1>Info Page</h1>
+      <p>Write something about you!</p>
+          </div>
+    </div>
+  </body>
+</html>

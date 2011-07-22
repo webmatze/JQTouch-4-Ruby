@@ -1,7 +1,5 @@
 require 'jqtouch'
 
-#and now our first test
-
 JQTouch.app "webmazte.de" do
   
   page :index do
